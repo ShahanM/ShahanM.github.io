@@ -1,0 +1,22 @@
+<header class="site-header">
+<div class="header-box" style="background-image:url({{ site.images.cover | default: '' }}); background-size: cover">
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+    {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+    <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a> 
+</div>
+<div class="wrapper">
+    <div class="ribbon">
+        <div class="links">
+            <svg class="profile-img" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="img" patternUnits="userSpaceOnUse" width="100" height="100">
+                        <image xlink:href="{{ site.images.profile | relative_url }}" x="-25" width="150" height="100" />
+                    </pattern>
+                </defs>
+                <polygon class="hex-border" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img)" />
+            </svg>
+        </div>
+    </div>
+</div>
+</header>
