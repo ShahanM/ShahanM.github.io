@@ -31,6 +31,7 @@ $on-large:      $on-laptop !default;
 // approach, whereas media queries used elsewhere now use min-width;
 @mixin media-query($device) {
     @media screen and (max-width: $device) {
+        @content;
     }
 }
 
@@ -42,6 +43,6 @@ $on-large:      $on-laptop !default;
 @import
     // "custom-variables", // Hook to override prederfined variables.
     "base", // Defines element resets.
-    "layour" //Defines structure and style based on CSS selectors.
+    "layout" //Defines structure and style based on CSS selectors.
     // "custom-styles" // Hook to override existing styles
 ;
