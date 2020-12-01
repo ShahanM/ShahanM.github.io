@@ -1,22 +1,63 @@
 <header class="site-header">
-<div class="header-box" style="background-image:url({{ site.images.cover | default: '' }}); background-size: cover">
-    {%- assign default_paths = site.pages | map: "path" -%}
-    {%- assign page_paths = site.header_pages | default: default_paths -%}
-    {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
-    <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a> 
-</div>
-<div class="wrapper">
-    <div class="ribbon">
-        <div class="links">
-            <svg class="profile-img" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="img" patternUnits="userSpaceOnUse" width="100" height="100">
-                        <image xlink:href="{{ site.images.profile | relative_url }}" x="-25" width="150" height="100" />
-                    </pattern>
-                </defs>
-                <polygon class="hex-border" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img)" />
-            </svg>
+    <div class="header-box" style="background-image:url({{ site.images.cover | default: '' }}); background-size: cover">
+        {%- assign default_paths = site.pages | map: "path" -%}
+        {%- assign page_paths = site.header_pages | default: default_paths -%}
+        {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+        <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+    </div>
+    <div class="wrapper">
+        <div class="ribbon">
+            <div class="links">
+                <svg class="profile-img" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="img" patternUnits="userSpaceOnUse" width="100" height="100">
+                            <image xlink:href="{{ site.images.profile | relative_url }}" x="-25" width="150"
+                                height="100" />
+                        </pattern>
+                    </defs>
+                    <polygon class="hex-border" points="50 1 95 25 95 75 50 99 5 75 5 25" fill="url(#img)" />
+                </svg>
+
+                <svg width='0' height='0'>
+                    <defs>
+                        <linearGradient id='bggrad'>
+                            <stop offset='0%' stop-color='rgb(199, 41, 41)' />
+                            <stop offset='100%' stop-colors='rgb(243, 67, 54)' />
+                        </linearGradient>
+                        <linearGradient id='brdgrad'>
+                            <stop offset='0%' stop-color='rgb(199, 41, 41)' />
+                            <stop offset='100%' stop-color='rgb(243, 67, 54)' />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                {%- if titles_size > 0 -%}
+                <nav class="site-nav">
+                    <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+                    <label for="nav-trigger">
+                        <span class="menu-icon">
+                            <svg viewBox="0 0 18 15" width="18px" height="15px">
+                                <path
+                                    d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z" />
+                            </svg>
+                        </span>
+                    </label>
+                    <div class="trigger">
+                        {%- for path in page_paths -%}
+                        {%- assign my_page = site.pages | where: "path", path | first -%}
+                        {%- if my_page.title -%}
+                        <div class='hex gradient-border'>
+                            <svg viewBox='0 0 100 100' preserveAspectRatio='none'>
+                                <path d='M25,7 L75,7 93,50 75,93 25,93 7,50z' vector-effect='non-scaling-stroke' />
+                            </svg>
+                            <span><a class="page-link"
+                                    href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></span>
+                        </div>
+                        {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+                </nav>
+                {%- endif -%}
+            </div>
         </div>
     </div>
-</div>
 </header>
