@@ -34,10 +34,15 @@
     border: 1px solid $brand-color-light;
     border-radius: 5px;
     text-align: right;
+    display: flex;
 
     top: 50%;
-    -ms-transform: translateY(50%);
-    transform: translateY(-50%);
+    -ms-transform: translateY(41%);
+    transform: translateY(-27%);
+
+    .hex-nav {
+        display: flex;
+    }
 
     .nav-trigger {
         display: flex;
@@ -65,15 +70,15 @@
         cursor: pointer;
     }
 
-    input ~ .trigger {
-        clear: both;
-        display: none;
-    }
+    // input ~ .trigger {
+    //     clear: both;
+    //     display: none;
+    // }
 
-    input:checked ~ .trigger {
-        display: block;
-        padding-bottom: 5px;
-    }
+    // input:checked ~ .trigger {
+    //     display: block;
+    //     padding-bottom: 5px;
+    // }
 
     .page-link {
         color: $text-color;
@@ -158,3 +163,221 @@
     transform: translateY(-50%);
 }
 
+
+/**
+* Hexagonal menu items
+**/
+.hex {
+    position: relative;
+    height: 54px;
+    min-width: 100px;
+    padding: 12px 24px;
+    // margin: 4px;
+    // float: left;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hex.gradient-bg {
+    color: white;
+}
+
+.hex.gradient-border {
+    color: rgb(199, 41, 41);
+}
+
+.hex svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.hex path {
+    stroke: url(#brdgrad);
+    stroke-width: 1;
+}
+
+.hex.gradient-bg path{
+    fill: url(#bggrad);
+}
+
+.hex.gradient-border path {
+    fill: rgb(245, 246, 248);
+}
+
+.hex span {
+    display: block;
+    // margin-top: 50px;
+    // padding: 8px;
+    // transform: tarnslateY(-50%);
+}
+
+.hex-border {
+    stroke-width: 1;
+    stroke: #d14;
+}
+
+
+/**
+* Site Footer
+**/
+
+.site-footer {
+    border-top: 1px solid $brand-color-light;
+    padding: $spacing-unit 0;
+}
+
+.footer-header {
+    @include relative-font-size(1.125);
+    margin-bottom: $spacing-unit / 2;
+}
+
+.feed-subscribe .svg-icon {
+    padding: 5px 5px 2px 0;
+}
+
+.contact-list,
+.social-media-list {
+    list-style: none;
+    margin-left: 0;
+}
+
+.footer-col-wrapper,
+.social-links {
+    @include relative-font-size(0.9375);
+    color: $brand-color;
+}
+
+.footer-col {
+    margin-bottom: $spacing-unit / 2;
+}
+
+.footer-col-1,
+.footer-col-2 {
+    width: calc(50% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3 {
+    width: calc(100% - (#{$spacing-unit} / 2));
+}
+
+@media screen and (min-width: $on-large) {
+    .footer-col-1 {
+        width: calc(35% - (#{$spacing-unit} / 2));
+    }
+
+    .footer-col-2 {
+        width: calc(20% - (#{$spacing-unit} / 2));
+    }
+
+    .footer-col-3 {
+        width: calc(45% - (#{$spacing-unit} / 2));
+    }
+}
+
+@media screen and (min-width: $on-medium) {
+    .footer-col-wrapper {
+        display: flex;
+    }
+
+    .footer-col {
+        width: calc(100% (#{spacing-unit} / 2));
+        padding: 0 ($spacing-unit / 2);
+
+        &:first-child {
+            padding-right: $spacing-unit / 2;
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+            padding-left: $spacing-unit / 2;
+        }
+    }
+}
+
+/**
+* Page content
+**/
+
+.page-content {
+    padding: $spacing-unit 0;
+    flex: 1 0 auto;
+}
+
+.page-heading {
+    @include relative-font-size(2);
+}
+
+.post-list-heading {
+    @include relative-font-size(1.75);
+}
+
+.post-list {
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+        margin-bottom: $spacing-unit;
+    }
+}
+
+.post-meta {
+    font-size: $small-font-size;
+    color: $brand-color;
+}
+
+.post-link {
+    display: block;
+    @include relative-font-size(1.5);
+}
+
+
+/**
+* Pagination navbar 
+**/
+
+.pagination {
+    margin-bottom: $spacing-unit;
+    @extend .social-media-list;
+    li {
+        a, div {
+            min-width: 41px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        div {
+            display: block;
+            padding: $spacing-unit / 4;
+            border: 1px solid transparent;
+
+            &.pager-edge {
+                color: darken($brand-color-light, 5%);
+                border: 1px dashed;
+            }
+        }
+    }
+}
+
+/**
+ * Grid helpers
+ */
+ @media screen and (min-width: $on-large) {
+    .one-half {
+      width: calc(50% - (#{$spacing-unit} / 2));
+    }
+  }
+  
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  
+    border: 2px dashed rgba(114, 186, 94, 0.35);
+    height: 400px;
+    background: rgba(114, 186, 94, 0.05);
+}
+  
