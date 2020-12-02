@@ -28,3 +28,69 @@ body {
     overflow-wrap: breakword;
 }
 
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, ul, ol, dl, figure,
+%vertical-rhythm {
+    margin-bottom: $spacing-unit / 2;
+}
+
+hr {
+    margin-top: $spacing-unit;
+    margin-bottom: $spacing-unit;
+}
+
+main {
+    display: block;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}
+
+ul, ol {
+    margin-left: $spacing-unit;
+}
+
+li {
+    > ul,
+    >ol {
+        margin-bottom: 0;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $base-font-weight;
+}
+
+a {
+    color: $link-base-color;
+    text-decoration: none;
+
+    &:visited {
+        color: $link-visited-color;
+    }
+
+    &:hover {
+        color: $text-color;
+        text-decoration: none;
+    }
+
+    .social-media-list &:hover {
+        text-decoration: none;
+
+        .username {
+            text-decoration: underline;
+        }
+    }
+}
+
